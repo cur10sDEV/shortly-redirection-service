@@ -1,6 +1,6 @@
 services:
-  short-url-redirection-api-server:
-    container_name: short-url-redirection-api-server-prod
+  short-url-redirection-service-api-server:
+    container_name: short-url-redirection-service-api-server-prod
     build:
       context: ../../
       dockerfile: ./docker/production/Dockerfile

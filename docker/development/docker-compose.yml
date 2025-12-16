@@ -24,7 +24,7 @@ services:
           "ping",
           "http://localhost:${APP_PORT:-8000}/api/v1/health-check",
         ]
-      interval: 30s
+      interval: 10s
       timeout: 5s
       retries: 5
 
@@ -44,7 +44,7 @@ services:
       - short-url-redirection-service-net
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 30s
+      interval: 10s
       timeout: 5s
       retries: 5
 
