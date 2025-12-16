@@ -38,6 +38,9 @@ RUN addgroup -S app && adduser -S -G app app
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
 
+# copy public folder
+COPY --from=builder /app/public ./public
+
 # copy built output if present
 COPY --from=builder /app/dist ./dist
 
@@ -45,5 +48,5 @@ USER app
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:docker"]
 # ------------------- Runtime stage ------------------- #
