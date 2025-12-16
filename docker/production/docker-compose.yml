@@ -1,0 +1,27 @@
+services:
+  short-url-redirection-api-server:
+    container_name: short-url-redirection-api-server-prod
+    build:
+      context: ../../
+      dockerfile: ./docker/production/Dockerfile
+    restart: always
+    image: short-url-redirection-api-server-prod
+    env_file: ../../.env
+    ports:
+      - "${APP_PORT:-8000}:${APP_PORT:-8000}"
+    networks:
+      - short-url-redirection-net
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "ping",
+          "http://localhost:${APP_PORT:-8000}/api/v1/health-check",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  short-url-redirection-net:
+    driver: bridge
