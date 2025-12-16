@@ -10,6 +10,7 @@ const envSchema = z.object({
   LOG_LEVEL: z.enum(['info', 'debug', 'error', 'warn', 'fatal']),
   SERIVCE_ID: z.string().min(1),
   API_INSTANCE_CLIENT_ID: z.string().min(1),
+  REDIS_URL: z.string().min(1),
 })
 
 type ENV = z.infer<typeof envSchema>
