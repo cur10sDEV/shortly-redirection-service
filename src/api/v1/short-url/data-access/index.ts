@@ -28,5 +28,7 @@ export const getShortUrlByShortCode = async (data: IGetShortUrlByShortCodeParams
   } catch (error) {
     logger.error('DB ERROR: SHORT_URL_REDIRECTION_SERVICE: getShortUrlByShortCode', error)
     return null
+  } finally {
+    client.release()
   }
 }
